@@ -49,6 +49,11 @@ class CircularQueue:
                 break
         print("Vuelve al inicio")
         
+    def peek(self):
+        if self.isEmpty():
+            raise Exception("La cola está vacía")
+        return self.head.data
+        
 myQueue = CircularQueue()
 myQueue.enqueue(1)  
 myQueue.enqueue(2)
@@ -57,3 +62,4 @@ myQueue.mostrar() #Mostramos la lista que representa la cola
 
 print("Elemento desencolado:", myQueue.dequeue())
 myQueue.mostrar() #Mostramos la lista que representa la cola
+print("Primer elemento:", myQueue.peek()) #Mostramos el primer elemento
