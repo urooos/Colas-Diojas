@@ -1,8 +1,7 @@
 #colas con listas enlazadas sin los apuntadores front y rear
-class Node:
-    def __init__(self, data):
-        self.data = data #Dato del nodo
-        self.next = None #Apunta al siguiente nodo
+import sys
+sys.path.append("c:\\Users\\oitw4\\OneDrive\\Desktop\\Colas_Diojas\\Clases")
+from clase_Nodo import Node
         
 class Queue:
     def __init__(self):

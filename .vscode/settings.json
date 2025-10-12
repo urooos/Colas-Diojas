@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./Clases" // Esto es una ruta relativa a la raíz del proyecto Colas_Diojas
+    ]
+}
