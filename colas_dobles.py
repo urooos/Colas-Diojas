@@ -10,12 +10,12 @@ class Deque:
     def isEmpty(self):
         return self.head is None
     
-    def enqueue_front(self, data):
+    def push_front(self, data):
         new_node = Node(data)     
         new_node.next = self.head #El siguiente del nuevo nodo es el nodo que apunta head #Si la cola esta vacia head es None por lo que new_node.next = None
         self.head = new_node #Head apunta al nuevo nodo
         
-    def enqueue_rear(self, data):
+    def push_back(self, data):
         new_node = Node(data) #Creamos un nuevo nodo
         if self.isEmpty(): #Si la cola esta vacia
             self.head = new_node #Head apunta al nuevo nodo
@@ -25,14 +25,14 @@ class Deque:
                 h = h.next #Movemos h al siguiente nodo
             h.next = new_node #Cuando h llega al ultimo nodo, el siguiente de este es el nuevo nodo
             
-    def dequeue_front(self):
+    def pop_front(self):
         if self.isEmpty(): #Si la cola esta vacia
             raise Exception("La cola esta vacia") #Lanzamos un error si esta vacia
         data = self.head.data #Guardamos el dato del nodo que apunta head
         self.head = self.head.next #Hacemos que head apunte al siguiente nodo
         return data #Regresamos el dato del nodo que se elimino 
     
-    def dequeue_rear(self):
+    def pop_rear(self):
         if self.isEmpty(): #Si la cola esta vacia
             raise Exception("La cola esta vacia") #Lanzamos un error si esta vacia
         h = self.head
@@ -46,3 +46,38 @@ class Deque:
         h.next = None #Hacemos que el siguiente del penultimo nodo apunte a None, por lo que el ultimo nodo se elimina de la cola
         return data #Regresamos el dato del nodo que se elimino
     
+    def peek_front(self):
+        if self.isEmpty(): 
+            raise Exception("La cola esta vacia")
+        
+        return self.head.data #Regresamos el dato del nodo que apunta head sin eliminarlo
+    
+    def peek_rear(self):
+        if self.isEmpty(): 
+            raise Exception("La cola esta vacia")
+        h = self.head
+        while h.next is not None: #Mientras el siguiente del nodo que apunta h no sea null
+            h = h.next #Movemos h al siguiente nodo
+        return h.data #Regresamos el dato del ultimo nodo sin eliminarlo
+    
+    def mostrar(self):
+        if self.isEmpty():
+            print("La cola está vacía")
+            return
+        h = self.head
+        while h is not None:
+            print(h.data, end=" -> ")
+            h = h.next
+        print("None")
+        
+myDeque = Deque()
+myDeque.push_front(1)
+myDeque.push_back(2)
+myDeque.push_front(0)
+myDeque.mostrar()  # Muestra: 0 -> 1 -> 2 -> None
+
+myDeque.pop_rear()
+myDeque.mostrar()  # Muestra: 0 -> 1 -> None
+
+myDeque.pop_front()
+myDeque.mostrar()  # Muestra: 1 -> None
