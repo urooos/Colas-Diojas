@@ -1,38 +1,53 @@
 class Queue:
-    def __init__(self):
-        self.queue = []  #creamos una variable llamada queue para guardar los elementos en una lista. usamos self para poder acceder a ella desde otros metodos de la clase
+    def __init__(self, capacity):
+        self.capacity = capacity              
+        self.queue = [None] * capacity        
+        self.front = 0                        
+        self.rear = -1                        
 
     def is_empty(self):
-        return not self.queue #Una lista vacia es False, una con elementos es True, usamos not para que concuerde con en el nombre del metodo
+        # Si rear < front, no hay elementos válidos
+        return self.rear < self.front
 
-    def enqueue(self, element):
-        self.queue.append(element) #Agregamos un elemento al final de la cola
+    def is_full(self):
+        # Si rear alcanza la última posición, está llena
+        return self.rear == self.capacity - 1
+
+    def enqueue(self, item):
+        if self.is_full():
+            raise Exception("La cola está llena, no se puede agregar el elemento.")
+        self.rear += 1
+        self.queue[self.rear] = item
 
     def dequeue(self):
-        if not self.is_empty():
-            return self.queue.pop(0) #Eliminamos el primer elemento de la cola si la cola no esta vacia
-        else: 
-            raise IndexError("La cola esta vacia, no se puede eliminar un elemento") #indexError indicia que se intnento acceder a un indice que no existe en la lista 
+        if self.is_empty():
+            raise Exception("La cola está vacía, no se puede eliminar ningún elemento.")
+        front_item = self.queue[self.front]
+        self.front += 1
+        return front_item
 
-    def peek(self):   
-        if not self.is_empty():
-            return self.queue[0] #Mostramos el primer elemento de la cola sin eliminarlo
-        else:
-            raise IndexError("La cola esta vacia, no se puede eliminar un elemento")
+    def show(self):
+        if self.is_empty():
+            raise Exception("La cola está vacía.")
+        print("Elementos en la cola:", end=" ")
+        for i in range(self.front, self.rear + 1):
+            print(self.queue[i], end=" ")
+        print()
 
 
+my_queue = Queue(5)
 
-myQueue = Queue() #creamos una insancia de la clase Queue
-#una instancia es un objeto creado a partir de la clase, con sus propios atributos y metodos 
+my_queue.enqueue(10)
+my_queue.enqueue(20)
+my_queue.enqueue(30)
+my_queue.show()
 
-myQueue.enqueue(1) #Agregamos elelementos a la cola
-myQueue.enqueue(2)
-myQueue.enqueue(3)
-primer_dato = myQueue.peek() #Mostramos el primer elemento de la cola sin eliminarlo
-print(primer_dato) #Imprimimos el primer elemento de la cola
+print("Elemento al frente que borraremos:", my_queue.peek())
 
-myQueue.dequeue() #Eliminamos el primer elemento de la cola 
-primer_dato = myQueue.peek() #Mostramos el primer elemento de la cola sin eliminarlo
-print(primer_dato) #Imprimimos el primer elemento de la cola
+my_queue.dequeue()
+my_queue.show()
 
-print(myQueue.queue) #Impimimos la variable queue de la instancia myQueue
+print("Se agregarán dos elementos...")
+my_queue.enqueue(40)
+my_queue.enqueue(50)
+my_queue.show()

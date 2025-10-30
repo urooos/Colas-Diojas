@@ -41,18 +41,8 @@ class OutputRestrictedDeque:
         else:
             self.front = (self.front + 1) % self.capacity #Incrementamos el índice del front circularmente ej: (0+1)%5 == 1 o (4+1)%5 == 0
         return data #Devolvemos el valor eliminado
-    
-    def peekFront(self):
-        if self.isEmpty():
-            raise Exception("Deque is empty")
-        return self.deque[self.front] #Devolvemos el valor en la posición del front sin eliminarlo
-    
-    def peekRear(self):
-        if self.isEmpty():
-            raise Exception("Deque is empty")
-        return self.deque[self.rear] #Devolvemos el valor en la posición del rear sin eliminarlo
-    
-    def display(self):
+
+    def show(self):
         if self.isEmpty():
             print("Deque is empty")
             return
@@ -69,15 +59,13 @@ print("Podemos insertar por ambos lados pero eliminar solo por el frente")
 myDeque = OutputRestrictedDeque(3) #Creamos una instancia de la clase OutputRestrictedDeque con capacidad 5
 
 myDeque.insertRear(1) #Agregamos elementos a la 
-myDeque.display() #Mostramos la lista que representa la cola
+myDeque.show() #Mostramos la lista que representa la cola
 print("Agregamos por rear:", myDeque.insertRear(2))
-myDeque.display()
+myDeque.show()
 print("Agregamos por front:", myDeque.insertFront(3))
-myDeque.display()
-print("Primer elemento:", myDeque.peekFront()) #Mostramos el primer elemento    
-print("Ultimo elemento:", myDeque.peekRear()) #Mostramos el ultimo elemento
+myDeque.show()
 print("Elemento eliminado por Front:", myDeque.deleteFront()) #Eliminamos el primer elemento
-myDeque.display()
+myDeque.show()
 
     
     

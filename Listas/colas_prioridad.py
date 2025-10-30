@@ -29,13 +29,7 @@ class PriorityQueue:
         self.head = self.head.next #Hacemos que head apunte al siguiente nodo
         return data #Regresamos el dato del nodo que se elimino
     
-    def peek(self):
-        if self.isEmpty(): 
-            print("La cola esta vacia")
-        
-        return self.head.data #Regresamos el dato del nodo que apunta head sin eliminarlo
-    
-    def mostrar(self):
+    def show(self):
         if self.isEmpty():
             print("La cola está vacía")
             return
@@ -49,8 +43,7 @@ myQueue = PriorityQueue() #Creamos una instancia de la clase PriorityQueue. Inst
 myQueue.enqueue("Tarea 1", 2) #Agregamos elementos a la cola con su prioridad
 myQueue.enqueue("Tarea 2", 1)
 myQueue.enqueue("Tarea 3", 3)
-myQueue.mostrar() #Mostramos la lista que representa la cola
+myQueue.show() #Mostramos la lista que representa la cola
 
-print("Elemento en la cima por prioridad:", myQueue.peek())
 print("Elemento desencolado por prioridad:", myQueue.dequeue())
-myQueue.mostrar() #Mostramos la lista que representa la cola
+myQueue.show() #Mostramos la lista que representa la cola

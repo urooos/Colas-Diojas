@@ -27,19 +27,22 @@ class Queue:
         self.head = self.head.next #Hacemos que head apunte al siguiente nodo
         return data #Regresamos el dato del nodo que se elimino
     
-    def peek(self):
-        if self.isEmpty(): 
-            print("La cola esta vacia")
-        
-        return self.head.data #Regresamos el dato del nodo que apunta head sin eliminarlo
+    def show(self):
+        if self.isEmpty():
+            print("La cola está vacía")
+            return
+        h = self.head
+        while h is not None:
+            print(f"{h.data} -> ", end="")
+            h = h.next
+        print("None")
         
 myQueue = Queue() #Creamos una instancia de la clase Queue. Instancia = objeto
 
 myQueue.enqueue(1) #Agregamos elementos a la cola
 myQueue.enqueue(2)
 myQueue.enqueue(3)
+myQueue.show()
 
-print("Primer elemento:", myQueue.peek()) #Mostramos el primr elemento
 print("Elemento eliminado:", myQueue.dequeue()) #Eliminamos el primer elemento
-print("Nuevo primer elemento:", myQueue.peek()) #Mostramos el nuevo primer elemento
-
+myQueue.show()

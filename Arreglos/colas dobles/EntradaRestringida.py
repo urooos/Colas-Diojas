@@ -42,17 +42,7 @@ class InputRestrictedDeque:
             self.rear = (self.rear - 1 + self.capacity) % self.capacity #Decrementamos el índice del rear circularmente ej: (0-1+5)%5 == 4 o (3-1+5)%5 == 2
         return data #Devolvemos el valor eliminado
     
-    def peekFront(self):
-        if self.isEmpty():
-            raise Exception("Deque is empty")
-        return self.deque[self.front] #Devolvemos el valor en la posición del front sin eliminarlo
-    
-    def peekRear(self):
-        if self.isEmpty():
-            raise Exception("Deque is empty")
-        return self.deque[self.rear] #Devolvemos el valor en la posición del rear sin eliminarlo
-    
-    def display(self):
+    def show(self):
         if self.isEmpty():
             print("Deque is empty")
             return
@@ -68,12 +58,10 @@ print("Solo podemos insertar por el rear pero eliminar por ambos extremos")
 myDeque = InputRestrictedDeque(5) #Creamos una instancia de la clase InputRestrictedDeque con capacidad 5
 myDeque.insertRear(10) #Insertamos elementos en el rear
 myDeque.insertRear(20)
-myDeque.display() #Mostramos los elementos del deque
+myDeque.show() #Mostramos los elementos del deque
 print("Insertado desde rear:", myDeque.insertRear(30))
-myDeque.display() #Mostramos los elementos del deque
-print("Primer elemento:", myDeque.peekFront()) #Mostramos el elemento en el front
-print("Ultimo element:", myDeque.peekRear()) #Mostramos el elemento en el rear
+myDeque.show() #Mostramos los elementos del deque
 print("Eliminamos desde Front:", myDeque.deleteFront()) #Eliminamos un elemento del front
-myDeque.display() #Mostramos los elementos del deque
+myDeque.show() #Mostramos los elementos del deque
 print("Eliminamos desde Rear:", myDeque.deleteRear()) #Eliminamos un elemento del rear
-myDeque.display() #Mostramos los elementos del deque
+myDeque.show() #Mostramos los elementos del deque

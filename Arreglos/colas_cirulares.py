@@ -33,23 +33,19 @@ class CircularQueue:
             self.front = (self.front + 1) % self.capacity #Movemos front al siguiente indice de forma circular
         
         return dato #Regresamos el dato que se elimino
-            
-    def peek(self):
-        if self.isEmpty():
-            raise Exception("La cola esta vacia")
-        return self.queue[self.front] #Regresamos el dato que apunta front sin eliminarlo
-    
-    def mostrar(self):
+
+    def show(self):
         if self.isEmpty():
             print("La cola está vacía")
             return
 
         i = self.front #Apuntador auxiliar que inicia en front
         while True:
-            print(self.queue[i], end=" -> ")
+            print(self.queue[i], end=", ")
             if i == self.rear: #Rompe el ciclo cuando i llegue a rear, osease al ultimo elemento en la cola
                 break
             i = (i + 1) % self.capacity #Movemos i al siguiente indice de forma circular
+        print("")
         
     
 myQueue = CircularQueue(5) #Creamos una instancia de la clase CircularQueue con capacidad 4
@@ -57,14 +53,12 @@ myQueue = CircularQueue(5) #Creamos una instancia de la clase CircularQueue con 
 myQueue.enqueue(1) #Agregamos elementos a la cola
 myQueue.enqueue(2)  
 myQueue.enqueue(3)
-print(myQueue.mostrar()) #Mostramos la lista que representa la cola
-print("Primer elemento:", myQueue.peek()) #Mostramos el primer elemento
+myQueue.show() #Mostramos la lista que representa la cola
 print("Elemento eliminado:", myQueue.dequeue()) #Eliminamos el primer elemento
 
-print(myQueue.mostrar()) 
-print("Nuevo primer elemento:", myQueue.peek()) #Mostramos el nuevo primer elemento
+myQueue.show() 
+print("Agregamos tres elementos para demostrar circularidad...")
 myQueue.enqueue(4)
 myQueue.enqueue(5) 
 myQueue.enqueue(6) 
-print(myQueue.mostrar())
-print("Primer elemento:", myQueue.peek()) 
+myQueue.show()

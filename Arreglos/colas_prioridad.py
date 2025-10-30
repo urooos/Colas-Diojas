@@ -37,26 +37,21 @@ class PriorityQueue:
         self.size -= 1 #Decrementamos el tamaño de la cola
         return data #Regresamos el dato que se elimino
     
-    def peek(self):
-        if self.isEmpty():
-            raise Exception("La cola esta vacia")
-        return self.queue[0][0] #Regresamos el dato del primer elemento en la cola sin eliminarlo
-    
-    def mostrar(self):
+    def show(self):
         if self.isEmpty():
             print("La cola está vacía")
             return
         for i in range(self.size):
-            print(f"({self.queue[i][0]}, prioridad: {self.queue[i][1]})", end=" -> ")
-        print("None")
+            print(f"({self.queue[i][0]}, prioridad: {self.queue[i][1]})", end=", ")
+        print("")
         
 myQueue = PriorityQueue(5) #Creamos una instancia de la clase PriorityQueue con capacidad 5
 myQueue.enqueue("Tarea 1", 2) #Agregamos elementos a la cola con su prioridad
 myQueue.enqueue("Tarea 2", 1)
 myQueue.enqueue("Tarea 3", 3)
-myQueue.mostrar() #Mostramos la lista que representa la cola
+myQueue.show() #Mostramos la lista que representa la cola
 
 print("Elemento desencolado por prioridad:", myQueue.dequeue())
-myQueue.mostrar() #Mostramos la lista que representa la cola
+myQueue.show() #Mostramos la lista que representa la cola
         
         
