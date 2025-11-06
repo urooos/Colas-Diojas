@@ -43,6 +43,7 @@ myQueue = PriorityQueue() #Creamos una instancia de la clase PriorityQueue. Inst
 myQueue.enqueue("Tarea 1", 2) #Agregamos elementos a la cola con su prioridad
 myQueue.enqueue("Tarea 2", 1)
 myQueue.enqueue("Tarea 3", 3)
+myQueue.enqueue("Tarea 4", 1)
 myQueue.show() #Mostramos la lista que representa la cola
 
 print("Elemento desencolado por prioridad:", myQueue.dequeue())

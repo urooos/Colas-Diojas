@@ -6,7 +6,7 @@ class Queue:
         self.rear = -1                        
 
     def is_empty(self):
-        # Si rear < front, no hay elementos válidos
+        # Si rear es menor qu
         return self.rear < self.front
 
     def is_full(self):
@@ -31,7 +31,7 @@ class Queue:
             raise Exception("La cola está vacía.")
         print("Elementos en la cola:", end=" ")
         for i in range(self.front, self.rear + 1):
-            print(self.queue[i], end=" ")
+            print(self.queue[i], end=", ")
         print()
 
 
@@ -42,8 +42,7 @@ my_queue.enqueue(20)
 my_queue.enqueue(30)
 my_queue.show()
 
-print("Elemento al frente que borraremos:", my_queue.peek())
-
+print("Se eliminará un elemento")
 my_queue.dequeue()
 my_queue.show()
 
